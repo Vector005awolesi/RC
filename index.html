@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Result processor</title>
+    <meta name="description" content="A tool for compiling and processing results">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div id="rensponsive">
+            <div id="studentInfo">
+                <label for="candidateName">Name</label>
+                <input type="text" class="form-control info-input" placeholder="Enter candidate name"
+                    id="candidateName">
+                <label for="candidateDepartment">Department</label>
+                <select name="Department" id="candidateDepartment" class="form-select form-select-md select-department">
+                    <option value="Science">Science</option>
+                    <option value="Art">Art</option>
+                    <option value="Commercial">Commercial</option>
+                </select>
+                <label for="candidateClass">Class</label>
+                <select name="Class" id="candidateClass" class="form-select form-select-md select-class">
+                    <option value="SS1" selected>SS1</option>
+                    <option value="SS2">SS2</option>
+                    <option value="SS3">SS3</option>
+                </select>
+                <label for="present">Attendance</label>
+                <input type="number" class="form-control form" placeholder="Times present" id="present">
+                <label for="session">Session</label>
+                <input type="text" class="form-control form" placeholder="Year/session" id="session">
+                <button class="btn btn-primary btn-md  btn-long" onclick="submit_candidateinfo()">Submit</button>
+            </div>
+        </div>
+        <div id="edit">
+            <div id="liveAlertPlaceholder"></div>
+            <button class="btn btn-success right-align-btn" onclick="processResult()">Process Result</button>
+            <button class="btn btn-primary" onclick="processTotal()">Process Total</button>
+            <table class="table table-light table-striped table-bordered">
+                <thead class="table-secondary">
+                    <th><span class="t-text">Subjects</span></th>
+                    <th><span class="t-text">Test</span></th>
+                    <th><span class="t-text">Exam</span></th>
+                    <th><span class="t-text">Total</span></th>
+                </thead>
+                <tr>
+                    <td id="english">English</td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="englishTestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="englishExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="englishTotalScore"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="maths">Mathematics</td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="mathsTestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="mathsExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="mathsTotalScore" placeholder=""
+                            disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="civic">
+                        Civic Education
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="civicTestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="civicExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="civicTotalScore" placeholder=""
+                            disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="biology">
+                        Biology
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="biologyTestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="biologyExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="biologyTotalScore"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="agric">
+                        Agriculture
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="agricTestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="agricExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="agricTotalScore" placeholder=""
+                            disabled>
+                    </td>
+                </tr>
+                <tr id="ds-1">
+                    <td id="departmentSubject1">Department</td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department1TestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department1ExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department1TotalScore"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr id="ds-2">
+                    <td id="departmentSubject2">
+                        Department
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department2TestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department2ExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department2TotalScore"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr id="ds-3">
+                    <td id="departmentSubject3">
+                        Department
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department3TestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department3ExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="department3TotalScore"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="economics">
+                        Economics
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="economicsTestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="economicsExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="economicsTotalScore"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="computer">
+                        Computer
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="computerTestScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="computerExamScore"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="computerTotalScore"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="furthermaths/yoruba">
+                        FMaths/Yoruba
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="f/yTestScore" placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="f/yExamScore" placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="f/yTotalScore" placeholder=""
+                            disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control form-control-table" id="customSubject1"
+                            placeholder="Custom subject">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="customSubject1Test"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="customSubject1Exam"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="customSubject1Total"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control form-control-table" id="customSubject2"
+                            placeholder="Custom subject">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="customSubject2Test"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="customSubject2Exam"
+                            placeholder="0">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-table" id="customSubject2Total"
+                            placeholder="" disabled>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="input-group mb-3">
+                <span class="input-group-text rensponsive-small" id="basic-addon1"><i class="far fa-comment"></i>
+                    &nbsp;&nbsp;Teacher's comment</span>
+                <input type="text" class="form-control" placeholder="Enter a comment for the candidate"
+                    aria-label="Username" aria-describedby="basic-addon1" class="form-control form-control-md comment"
+                    id="teacherComment">
+            </div>
+            <button class="btn btn-success right-align-btn" onclick="processResult()">Prepare Result</button>
+            <button class="btn btn-primary right-align-btn" id="liveAlertbtn" onclick="processTotal()">Process
+                Total</button>
+        </div>
+
+        <div id="log">
+            <button class="btn btn-success right-align-btn" id="print-btn-3" onclick="print()">Print Result</button>
+            <table class=" table table-striped table-light table-bordered">
+                <thead class="table-success">
+                    <td id="name_container" class="submit-header"></td>
+                    <td id="class_container" class="submit-header"></td>
+                    <td id="session_container" class="submit-header" colspan="2"></td>
+                    <td id="attendance_container" class="submit-header"></td>
+                </thead>
+                <tr>
+                    <td>Subjects</td>
+                    <td class="submit-header">Test 30</td>
+                    <td class="submit-header">Exam 70</td>
+                    <td class="submit-header">Total</td>
+                    <td class="submit-header">Grades</td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="englishtScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="englisheScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="englishtoScore" disabled>
+                    </td>
+                    <td id="englishGrade" class="grade">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="mathtScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="matheScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="mathtoScore" disabled>
+                    </td>
+                    <td id="mathGrade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Civic Education</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="civictScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="civiceScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="civictoScore" disabled>
+                    </td>
+                    <td id="civicGrade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Biology</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="biologytScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="biologyeScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="biologytoScore" disabled>
+                    </td>
+                    <td id="biologyGrade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Agriculture</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="agrictScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="agriceScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="agrictoScore" disabled>
+                    </td>
+                    <td id="agricGrade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td id="d1">Department</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d1tScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d1eScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d1toScore" disabled>
+                    </td>
+                    <td id="d1Grade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td id="d2">Department</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d2tScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d2eScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d2toScore" disabled>
+                    </td>
+                    <td id="d2Grade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td id="d3">Department</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d3tScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d3eScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="d3toScore" disabled>
+                    </td>
+                    <td id="d3Grade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Economics</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="economicstScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="economicseScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="economicstoScore" disabled>
+                    </td>
+                    <td id="economicsGrade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Computer</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="computertScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="computereScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="computertoScore" disabled>
+                    </td>
+                    <td id="computerGrade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>FMaths/youruba</td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="f-ytScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="f-yeScore" disabled>
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-submit" id="f-ytoScore" disabled>
+                    </td>
+                    <td id="fyGrade" class="grade">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"><span id="teachers_comment">Teacher's Comment: </span></td>
+                    <!-- <td class="submit-header"><b><span id="ranking_container"></span></b></td> -->
+                    <td class="submit-header"><span id="overall_container"></span></td>
+                </tr>
+            </table>
+            <button class="btn btn-danger" onclick="backtoEditboard()" id="print-btn-1">Back to edit</button>
+            <button class="btn btn-success right-align-btn" id="print-btn-2" onclick="print()">Print Result</button>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="container">
+        <footer class="footer-footer">
+            <a href="https://vector005awolesi.github.io" class="link"><i class="fab fa-github"
+                    style="cursor:pointer"></i> Support my work on github</a>
+            <br><br>
+            <span><small><i class="fas fa-gear"></i> Developed by victor</small></span>
+            <hr>
+            <span>&copy;rc-compiler.net</span>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e7ecf3d62d.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

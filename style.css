@@ -1,0 +1,386 @@
+#science {
+  display: none;
+}
+#commercial {
+  display: none;
+}
+#art {
+  display: none;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#form {
+  padding: 30px;
+  display: grid;
+  justify-content: center;
+}
+#message {
+  padding: 10px;
+  border: 1px solid #19191969;
+  border-radius: 7px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background: #e2e0e0;
+  color: #191919;
+}
+#input {
+  padding: 10px;
+  border: 1px solid #19191969;
+  margin-bottom: 1px;
+  width: 500px;
+}
+#department_subjects {
+  padding: 10px;
+  border: 1px #ccc solid;
+  width: 500px;
+  display: none;
+}
+label {
+  font-size: 16px;
+  color: #33333396;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+/* input.form-control{
+    border-radius:6px;
+    margin-bottom:5px;
+} */
+input.department {
+  display: inline-block;
+  width: 80%;
+}
+.link{
+  text-decoration: none;
+  cursor: pointer;
+  color:#292929;
+}
+#result_log {
+  padding: 10px;
+  border: 1px solid #19191969;
+  width: 500px;
+  background: #f8f6f6;
+  display: none;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+#studentInfo {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f7f3f3;
+  border: thin 1px #292929;
+}
+select.select-class {
+  width: 100px;
+  display: inline-block;
+}
+input.info-input {
+  display: inline-block;
+  width: 30%;
+  margin-right: 1%;
+  margin-bottom: 10px;
+}
+.t-text {
+  color: #181616c7;
+  text-align: center;
+}
+input.form-control-table {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px thin gray;
+  /* width:120px; */
+  margin-top: 4px;
+}
+input.form-control-table::placeholder {
+  color: #524e4ee0;
+  /* text-align: right; */
+}
+button.right-align-btn {
+  float: right;
+  margin: 5px;
+}
+table.table {
+  vertical-align: middle;
+}
+.select-department {
+  width: 140px !important;
+  display: inline-block !important;
+}
+#log {
+  display: none;
+}
+#edit {
+  display: block;
+}
+.form-submit {
+  background: transparent !important;
+  border: none !important;
+  width: 60%;
+  text-align: center;
+}
+.submit-header {
+  text-align: center;
+}
+.form {
+  display: inline-block !important;
+  width: 20% !important;
+  margin-bottom: 10px;
+  margin-right: 4px;
+}
+.grade {
+  text-align: center;
+  /* border-right: #ccc thin groove!important; */
+}
+.menubar{
+  display:none;
+  position:fixed;
+  top:0;
+  right:0
+}
+.footer-footer{
+  clear:both;
+  padding:10px;
+  background:#e6e3e3;
+  text-align: center;
+  font-weight: bold;
+  color:#383737
+}
+ /* Rensponsiveness */
+ @media screen and (max-width:320px) {
+  #science {
+    display: none;
+  }
+  #commercial {
+    display: none;
+  }
+  #art {
+    display: none;
+  }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  #form {
+    padding: 30px;
+    display: grid;
+    justify-content: center;
+  }
+
+  label {
+    font-size: 14px;
+    color: #33333396;
+    font-weight: bolder;
+    margin-bottom: 5px;
+  }
+
+  #studentInfo {
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #f7f3f3;
+    border: thin 1px #292929;
+  }
+  select.select-class {
+    width: 100%;
+    display: inline-block;
+    font-size: 14px;
+  }
+  input.info-input {
+    display: inline-block;
+    width: 100%;
+    margin-right: 1%;
+    margin-bottom: 10px;
+  }
+  .t-text {
+    color: #181616c7;
+    text-align: center;
+  }
+  input.form-control-table {
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px thin gray;
+    /* width:120px; */
+    margin-top: 4px;
+  }
+  input.form-control-table::placeholder {
+    color: #524e4ee0;
+    /* text-align: right; */
+  }
+  button.right-align-btn {
+    float: right;
+    margin: 5px;
+  }
+  table.table {
+    vertical-align: middle;
+  }
+  .select-department {
+    width: 100% !important;
+    display: inline-block !important;
+  }
+  #log {
+    display: none;
+  }
+  #edit {
+    display: block;
+  }
+  .form-submit {
+    background: transparent !important;
+    border: none !important;
+    /* width: 0%; */
+    text-align: center;
+  }
+  .submit-header {
+    text-align: center;
+  }
+  .form {
+    display: inline-block !important;
+    width: 20% !important;
+    margin-bottom: 10px;
+    margin-right: 4px;
+  }
+  .grade {
+    text-align: center;
+    /* border-right: #ccc thin groove!important; */
+  }
+ 
+  table{
+    font-size:13px;
+    scale:97%
+  }
+  #present{ 
+    width:80% !important
+  }
+  #session{
+    width: 60% !important
+  }
+  input.form-control{
+    font-size: 14px;
+  }
+  .rensponsive-small{
+    width:35px
+  }
+  .menubar{
+    display:block;
+    position:fixed;
+    top:0;
+    right:10px;
+    z-index:3;
+    color:rgb(28, 28, 29)
+  }
+  #rensponsive{
+    height:0;
+    overflow: hidden;
+    margin-bottom:20px;
+    transition:.5s
+  }
+ }
+ @media screen and (min-width:321px) and (max-width:425px) {
+  #science {
+    display: none;
+  }
+  #commercial {
+    display: none;
+  }
+  #art {
+    display: none;
+  }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  #form {
+    padding: 30px;
+    display: grid;
+    justify-content: center;
+  }
+
+  label {
+    font-size: 14px;
+    color: #33333396;
+    font-weight: bolder;
+    margin-bottom: 5px;
+  }
+
+  #studentInfo {
+    padding: 8px;
+    margin-bottom: 10px;
+    background: #f7f3f3;
+    border: thin 1px #292929;
+  }
+  select.select-class {
+    width: 100%;
+    display: inline-block;
+    font-size: 14px;
+  }
+  input.info-input {
+    display: inline-block;
+    width: 100%;
+    margin-right: 1%;
+    margin-bottom: 10px;
+  }
+  .t-text {
+    color: #181616c7;
+    text-align: center;
+  }
+  input.form-control-table {
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px thin gray;
+    /* width:120px; */
+    margin-top: 4px;
+  }
+  input.form-control-table::placeholder {
+    color: #524e4ee0;
+    /* text-align: right; */
+  }
+  button.right-align-btn {
+    float: right;
+    margin: 5px;
+  }
+  table.table {
+    vertical-align: middle;
+  }
+  .select-department {
+    width: 100% !important;
+    display: inline-block !important;
+  }
+  #log {
+    display: none;
+  }
+  #edit {
+    display: block;
+  }
+  .form-submit {
+    background: transparent !important;
+    border: none !important;
+    /* width: 0%; */
+    text-align: center;
+  }
+  .submit-header {
+    text-align: center;
+  }
+  .form {
+    display: inline-block !important;
+    width: 20% !important;
+    margin-bottom: 10px;
+    margin-right: 4px;
+  }
+  .grade {
+    text-align: center;
+    /* border-right: #ccc thin groove!important; */
+  }
+ 
+  table{
+    font-size:15px;
+  }
+  button.btn{
+    margin-bottom:10px
+  }
+  #present{ 
+    width:90% !important
+  }
+  #session{
+    width: 70% !important
+  }
+  input.form-control{
+    font-size: 14px;
+  }
+  .rensponsive-small{
+    width:35px
+  }
+ }
+ 
